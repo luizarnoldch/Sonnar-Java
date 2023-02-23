@@ -1,78 +1,76 @@
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
-public class ChessPanel
-    extends JPanel{
-    private ChessMenuBar    menuBar;
-    private ChessGameBoard  gameBoard;
-    private ChessGameLog    gameLog;
-    private ChessGraveyard  playerOneGraveyard;
-    private ChessGraveyard  playerTwoGraveyard;
-    private ChessGameEngine gameEngine;
+
+/**
+ Se han eliminado los import no utilizados.
+ Se han eliminado los comentarios redundantes.
+ Los miembros de clase se inicializan en la declaración y se han hecho finales.
+ Se han eliminado los nombres de parámetros redundantes en los comentarios de los métodos.
+ Se ha simplificado el método getGraveyard utilizando el operador ternario.
+ */
+public class ChessPanel extends JPanel {
+    private final ChessMenuBar menuBar = new ChessMenuBar();
+    private final ChessGameBoard gameBoard = new ChessGameBoard();
+    private final ChessGameLog gameLog = new ChessGameLog();
+    private final ChessGraveyard playerOneGraveyard = new ChessGraveyard("Player 1's graveyard");
+    private final ChessGraveyard playerTwoGraveyard = new ChessGraveyard("Player 2's graveyard");
+    private final ChessGameEngine gameEngine;
+
     // ----------------------------------------------------------
     /**
      * Create a new ChessPanel object.
      */
-    public ChessPanel(){
-        this.setLayout( new BorderLayout() );
-        menuBar = new ChessMenuBar();
-        gameBoard = new ChessGameBoard();
-        gameLog = new ChessGameLog();
-        playerOneGraveyard = new ChessGraveyard( "Player 1's graveyard" );
-        playerTwoGraveyard = new ChessGraveyard( "Player 2's graveyard" );
-        this.add( menuBar, BorderLayout.NORTH );
-        this.add( gameBoard, BorderLayout.CENTER );
-        this.add( gameLog, BorderLayout.SOUTH );
-        this.add( playerOneGraveyard, BorderLayout.WEST );
-        this.add( playerTwoGraveyard, BorderLayout.EAST );
-        this.setPreferredSize( new Dimension( 800, 600 ) );
-        gameEngine = new ChessGameEngine( gameBoard ); // start the game
+    public ChessPanel() {
+        setLayout(new BorderLayout());
+        add(menuBar, BorderLayout.NORTH);
+        add(gameBoard, BorderLayout.CENTER);
+        add(gameLog, BorderLayout.SOUTH);
+        add(playerOneGraveyard, BorderLayout.WEST);
+        add(playerTwoGraveyard, BorderLayout.EAST);
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        gameEngine = new ChessGameEngine(gameBoard); // start the game
     }
+
     // ----------------------------------------------------------
     /**
      * Gets the logger object for use in other classes.
-     * 
-     * @return ChessGameLog the ChessGameLog object
+     *
+     * @return the ChessGameLog object
      */
-    public ChessGameLog getGameLog(){
+    public ChessGameLog getGameLog() {
         return gameLog;
     }
+
     // ----------------------------------------------------------
     /**
      * Gets the board object for use in other classes.
-     * 
-     * @return ChessGameBoard the ChessGameBoard object
+     *
+     * @return the ChessGameBoard object
      */
-    public ChessGameBoard getGameBoard(){
+    public ChessGameBoard getGameBoard() {
         return gameBoard;
     }
+
     // ----------------------------------------------------------
     /**
-     * Gets the game engine object for use in other classes
-     * 
-     * @return ChessGameEngine the ChessGameEngine object
+     * Gets the game engine object for use in other classes.
+     *
+     * @return the ChessGameEngine object
      */
-    public ChessGameEngine getGameEngine(){
+    public ChessGameEngine getGameEngine() {
         return gameEngine;
     }
+
     // ----------------------------------------------------------
     /**
      * Gets the appropriate graveyard object for use in other classes.
-     * 
+     *
      * @param whichPlayer
      *            the number of the player (1 or 2)
-     * @return ChessGraveyard the graveyard requested
+     * @return the graveyard requested
      */
-    public ChessGraveyard getGraveyard( int whichPlayer ){
-        if ( whichPlayer == 1 ){
-            return playerOneGraveyard;
-        }
-        else if ( whichPlayer == 2 ){
-            return playerTwoGraveyard;
-        }
-        else
-        {
-            return null;
-        }
+    public ChessGraveyard getGraveyard(int whichPlayer) {
+        return (whichPlayer == 1) ? playerOneGraveyard : (whichPlayer == 2) ? playerTwoGraveyard : null;
     }
 }

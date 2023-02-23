@@ -2,7 +2,16 @@ import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
-
+// -------------------------------------------------------------------------
+/**
+ * This is the backend behind the Chess game. Handles the turn-based aspects of
+ * the game, click events, and determines win/lose conditions.
+ *
+ * @author Ben Katz (bakatz)
+ * @author Myles David II (davidmm2)
+ * @author Danielle Bushrow (dbushrow)
+ * @version 2010.11.17
+ */
 public class ChessGameEngine{
     private ChessGamePiece currentPiece;
     private boolean        firstClick;

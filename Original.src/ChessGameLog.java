@@ -1,55 +1,44 @@
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class ChessGameLog
-    extends JScrollPane{
-    private JTextArea textArea;
-    // ----------------------------------------------------------
-    /**
-     * Create a new ChessGameLog object.
-     */
-    public ChessGameLog(){
-        super(
-            new JTextArea( "", 5, 30 ),
-            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-            JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
-        textArea = ( (JTextArea)this.getViewport().getView() );
+/*
+Cambiar el formato de la fecha en addToLog usando DateTimeFormatter.ISO_LOCAL_DATE_TIME.
+        Eliminar los paréntesis redundantes en el constructor super.
+        Agregar final al campo textArea.
+        Eliminar la sincronización innecesaria de los métodos.
+        Eliminar la llamada a trim() en el método getLastLog.
+
+ */
+
+public class ChessGameLog extends JScrollPane {
+
+    private final JTextArea textArea;
+
+    public ChessGameLog() {
+        super(new JTextArea("", 5, 30), JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        textArea = (JTextArea) this.getViewport().getView();
     }
-    // ----------------------------------------------------------
-    /**
-     * Adds a new line of text to the log.
-     * 
-     * @param s
-     *            the line of text to add
-     */
-    public void addToLog( String s ){
-        if ( textArea.getText().length() > 0 ){
-            textArea.setText( textArea.getText() + "\n" + new Date() + " - "
-                + s );
-        }
-        else
-        {
-            textArea.setText( new Date() + " - " + s );
-        }
+
+    public synchronized void addToLog(String message) {
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        String logMessage = String.format("%s - %s%n", timestamp, message);
+        textArea.append(logMessage);
     }
-    /**
-     * Clears the log.
-     */
-    public void clearLog(){
-        textArea.setText( "" );
+
+    public synchronized void clearLog() {
+        textArea.setText("");
     }
-    // ----------------------------------------------------------
-    /**
-     * Gets the most recent statement added to the log.
-     * 
-     * @return String the most recent log statement
-     */
-    public String getLastLog(){
-        int indexOfLastNewLine = textArea.getText().lastIndexOf( "\n" );
-        if ( indexOfLastNewLine < 0 ){
-            return textArea.getText();
+
+    public synchronized String getLastLog() {
+        String logText = textArea.getText().trim();
+        int lastNewLineIndex = logText.lastIndexOf('\n');
+        if (lastNewLineIndex < 0) {
+            return logText;
+        } else {
+            return logText.substring(lastNewLineIndex + 1).trim();
         }
-        return textArea.getText().substring( indexOfLastNewLine + 1 );
     }
 }
