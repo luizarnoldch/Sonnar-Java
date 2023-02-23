@@ -1,14 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-// -------------------------------------------------------------------------
-/**
- * Class to represent the Bishop piece.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class Bishop extends ChessGamePiece{
     /**
      * Creates a new Bishop object.

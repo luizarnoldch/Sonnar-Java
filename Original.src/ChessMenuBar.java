@@ -1,15 +1,7 @@
 import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
-// -------------------------------------------------------------------------
-/**
- * Represents the north menu-bar that contains various controls for the game.
- *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class ChessMenuBar
     extends JMenuBar{
     // ----------------------------------------------------------

@@ -1,16 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-// -------------------------------------------------------------------------
-/**
- * Represents a Pawn game piece. Unique in that it can move two locations on its
- * first turn and therefore requires a new 'notMoved' variable to keep track of
- * its turns.
- *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class Pawn
     extends ChessGamePiece{
     private boolean notMoved;

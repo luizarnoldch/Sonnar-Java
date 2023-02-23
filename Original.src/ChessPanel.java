@@ -1,14 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
-// -------------------------------------------------------------------------
-/**
- * The main panel of the Chess game.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class ChessPanel
     extends JPanel{
     private ChessMenuBar    menuBar;

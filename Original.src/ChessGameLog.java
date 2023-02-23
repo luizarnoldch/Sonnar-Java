@@ -1,16 +1,7 @@
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.util.Date;
-// -------------------------------------------------------------------------
-/**
- * A scrollable textArea representing the game log. (i.e. moves made by each
- * player)
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class ChessGameLog
     extends JScrollPane{
     private JTextArea textArea;
